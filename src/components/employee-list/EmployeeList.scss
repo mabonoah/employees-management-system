@@ -1,0 +1,11 @@
+@import "../../assets/style/variables.scss";
+
+.table-container {
+    margin: 0 auto;
+    width: 100%;
+    max-width: $max-app-width;
+
+    .MuiTableCell-head {
+        z-index: 100;
+    }
+}

@@ -1,0 +1,88 @@
+@import "../../assets/style/variables.scss";
+@import "../../assets/style/mixins.scss";
+
+// Setting up flexbox for list
+.status-list {
+	display: flex;
+	list-style-type: none;
+}
+
+// Defaults for each 'status'
+.status-item {
+	color: $dark-color;
+	width: 100%;
+	margin: 0 0.1rem;
+
+	.item-title {
+		position: relative;
+		z-index: 2;
+
+		&.active {
+			font-weight: bold;
+		}
+	}
+}
+
+// Creates the 'arrow' effect / background colors
+.item-wrap {
+	cursor: pointer;
+	padding: 1rem;
+	position: relative;
+	height: 100%;
+
+	&:before,
+	&:after {
+		content: "";
+		position: absolute;
+		left: 0;
+		width: 100%;
+		height: 50%;
+		z-index: 1;
+		background-color: $gray-light-color;
+	}
+
+	// Top of the arrow
+	&:before {
+		top: 0;
+		@include transform(skew(20deg));
+		@include border-radius(0.2em 0.2em 0 0);
+	}
+
+	// Bottom of the arrow
+	&:after {
+		bottom: 0;
+		@include transform(skew(-20deg));
+		@include border-radius(0 0 0.2rem 0.2rem);
+	}
+}
+
+// Changing status styles based on :first/:last status
+.status-item:first-child .item-wrap,
+.status-item:last-child .item-wrap {
+	width: 100%;
+
+	&:before,
+	&:after {
+		width: 50%;
+	}
+}
+
+// If first status, only point on the right
+.status-item:first-child .item-wrap {
+	background: linear-gradient(to right, $gray-light-color 95%, transparent 5%);
+
+	&:before,
+	&:after {
+		left: 50%;
+	}
+}
+
+// If last status, only indent on the left
+.status-item:last-child .item-wrap {
+	background: linear-gradient(to left, $gray-light-color 95%, transparent 5%);
+
+	&:before,
+	&:after {
+		right: 50%;
+	}
+}
