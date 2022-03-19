@@ -58,7 +58,10 @@ export default function EmployeeList() {
                 {employee.name}
               </TableCell>
               <TableCell>
-                <EmployeeStatus currentStatus={employee.status} />
+                <EmployeeStatus
+                  employeeId={employee.id}
+                  employeeStatus={employee.status}
+                />
               </TableCell>
             </TableRow>
           ))}

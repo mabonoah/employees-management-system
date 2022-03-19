@@ -1,8 +1,19 @@
+import { useState } from "react";
 import "./EmployeeStatus.scss";
 import { Status } from "./employeeStatusUtils";
+type EmployeeStatusProps = {
+  employeeId: number;
+  employeeStatus: Status;
+};
 
-export default function EmployeeStatus({ ...props }) {
-  const statuses: Status[] = [
+export default function EmployeeStatus(props: EmployeeStatusProps) {
+  const [status, setStatus] = useState(props.employeeStatus);
+
+  function updateStatus(status: Status) {
+    setStatus(status);
+  }
+
+  const statusList: Status[] = [
     Status.added,
     Status.incheck,
     Status.approved,
@@ -12,17 +23,18 @@ export default function EmployeeStatus({ ...props }) {
 
   return (
     <ul className="status-list">
-      {statuses.map((status: Status) => {
+      {statusList.map((statusItem: Status, index: number) => {
         return (
-          <li key={status} className="status-item">
+          <li key={index} className="status-item">
             <div
               className={
-                props.currentStatus === status
-                  ? `item-wrap ${status.toLowerCase()}`
+                status === statusItem
+                  ? `item-wrap ${statusItem.toLowerCase()}`
                   : "item-wrap"
               }
+              onClick={() => updateStatus(statusItem)}
             >
-              <p className="item-title">{status}</p>
+              <p className="item-title">{statusItem}</p>
             </div>
           </li>
         );
