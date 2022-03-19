@@ -1,16 +1,24 @@
 import { useState } from "react";
+import { patch } from "../../api/api";
+import { Employee } from "../employee-list/employeeListUtils";
 import "./EmployeeStatus.scss";
 import { Status } from "./employeeStatusUtils";
+import { successToast } from "../../utils/toast";
+
 type EmployeeStatusProps = {
-  employeeId: number;
-  employeeStatus: Status;
+  employee: Employee;
 };
 
 export default function EmployeeStatus(props: EmployeeStatusProps) {
-  const [status, setStatus] = useState(props.employeeStatus);
+  const [status, setStatus] = useState(props.employee.status);
 
   function updateStatus(status: Status) {
-    setStatus(status);
+    const employee: Employee = { ...props.employee };
+    employee.status = status;
+    patch(`employees/${employee.id}`, employee).then(() => {
+      setStatus(status);
+      successToast(`${employee.name} status is updated`);
+    });
   }
 
   const statusList: Status[] = [

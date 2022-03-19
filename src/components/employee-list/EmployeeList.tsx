@@ -1,4 +1,5 @@
 import "./EmployeeList.scss";
+import { useEffect, useState } from "react";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -8,37 +9,15 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { Employee } from "./employeeListUtils";
 import EmployeeStatus from "../employee-status/EmployeeStatus";
-import { Status } from "../employee-status/employeeStatusUtils";
-
-const employees: Employee[] = [
-  {
-    id: 1,
-    name: "Ali Muhammad",
-    status: Status.added,
-  },
-  {
-    id: 2,
-    name: "Mahmoud Ahmed",
-    status: Status.active,
-  },
-  {
-    id: 3,
-    name: "Mohsen Ayman",
-    status: Status.inactive,
-  },
-  {
-    id: 4,
-    name: "Noah Muhammad",
-    status: Status.approved,
-  },
-  {
-    id: 5,
-    name: "Ibrahim Ali",
-    status: Status.incheck,
-  },
-];
+import { getAll } from "../../api/api";
 
 export default function EmployeeList() {
+  const [employees, setEmployees] = useState([]);
+
+  useEffect(() => {
+    getAll("employees").then((data) => setEmployees(data));
+  }, []);
+
   return (
     <TableContainer className="table-container" component={Paper}>
       <Table sx={{ minWidth: 500 }} stickyHeader>
@@ -58,10 +37,7 @@ export default function EmployeeList() {
                 {employee.name}
               </TableCell>
               <TableCell>
-                <EmployeeStatus
-                  employeeId={employee.id}
-                  employeeStatus={employee.status}
-                />
+                <EmployeeStatus employee={employee} />
               </TableCell>
             </TableRow>
           ))}

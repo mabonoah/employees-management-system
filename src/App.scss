@@ -16,3 +16,7 @@ header {
   background: $dark-color;
   margin-bottom: 1rem;
 }
+
+.Toastify__toast {
+  min-width: max-content;
+}
