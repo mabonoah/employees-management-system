@@ -3,27 +3,27 @@
     {
       "id": 1,
       "name": "Mahmoud Ahmed",
-      "status": "Approved"
+      "status": "Added"
     },
     {
       "id": 2,
       "name": "Mahmoud Ahmed",
-      "status": "Active"
+      "status": "In-check"
     },
     {
       "id": 3,
       "name": "Mohsen Ayman",
-      "status": "In-check"
+      "status": "Approved"
     },
     {
       "id": 4,
       "name": "Noah Muhammad",
-      "status": "Added"
+      "status": "Active"
     },
     {
       "id": 5,
       "name": "Ibrahim Ali",
-      "status": "Approved"
+      "status": "Inactive"
     }
   ]
 }

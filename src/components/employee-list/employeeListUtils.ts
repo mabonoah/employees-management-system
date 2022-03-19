@@ -1,7 +1,7 @@
 import { Status } from "../employee-status/employeeStatusUtils";
 
 export type Employee = {
-    id: number;
+    id?: number;
     name: string;
     status: Status;
 }

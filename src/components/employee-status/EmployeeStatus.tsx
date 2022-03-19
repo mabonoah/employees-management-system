@@ -17,7 +17,7 @@ export default function EmployeeStatus(props: EmployeeStatusProps) {
     employee.status = status;
     patch(`employees/${employee.id}`, employee).then(() => {
       setStatus(status);
-      successToast(`${employee.name} status is updated`);
+      successToast(`${employee.name} status is updated successfully!`);
     });
   }
 

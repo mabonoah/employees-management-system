@@ -11,12 +11,16 @@ import { Employee } from "./employeeListUtils";
 import EmployeeStatus from "../employee-status/EmployeeStatus";
 import { getAll } from "../../api/api";
 
-export default function EmployeeList() {
+type EmployeeListProps = {
+  updateEmployeeList: boolean;
+};
+
+export default function EmployeeList(props: EmployeeListProps) {
   const [employees, setEmployees] = useState([]);
 
   useEffect(() => {
     getAll("employees").then((data) => setEmployees(data));
-  }, []);
+  }, [props.updateEmployeeList]);
 
   return (
     <TableContainer className="table-container" component={Paper}>

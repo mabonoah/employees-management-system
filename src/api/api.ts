@@ -11,6 +11,12 @@ export async function getAll(path: string) {
     .catch((error) => errorHandler(error));
 }
 
+export async function post(path: string, data: any) {
+  return api.post(path, data)
+    .then()
+    .catch((error) => errorHandler(error));
+}
+
 export async function patch(path: string, data: any) {
   return api.patch(path, data)
     .then()

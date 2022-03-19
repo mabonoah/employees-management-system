@@ -1,5 +1,6 @@
 @import "./assets/style/variables.scss";
 
+// App container
 #app-container {
   position: relative;
   display: flex;
@@ -8,6 +9,7 @@
   width: 100%;
 }
 
+// App header
 header {
   min-height: $app-header-height;
   line-height: $app-header-height;
@@ -17,6 +19,7 @@ header {
   margin-bottom: 1rem;
 }
 
+// Override toastify style
 .Toastify__toast {
   min-width: max-content;
 }
