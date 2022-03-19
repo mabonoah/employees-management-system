@@ -1,9 +1,6 @@
-@import "../../assets/style/variables.scss";
-
 .table-container {
     margin: 0 auto;
-    width: 100%;
-    max-width: $max-app-width;
+    max-width: fit-content;
 
     .MuiTableCell-head {
         z-index: 100;

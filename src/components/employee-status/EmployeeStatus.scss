@@ -5,6 +5,7 @@
 .status-list {
 	display: flex;
 	list-style-type: none;
+	width: 30rem;
 }
 
 // Defaults for each 'status'
@@ -13,22 +14,26 @@
 	width: 100%;
 	margin: 0 0.1rem;
 
+	&:hover {
+		@include transform(scale(1.02));
+	}
+
 	.item-title {
 		position: relative;
 		z-index: 2;
-
-		&.active {
-			font-weight: bold;
-		}
 	}
 }
 
 // Creates the 'arrow' effect / background colors
 .item-wrap {
 	cursor: pointer;
-	padding: 1rem;
+	padding: 0.4rem 0.8rem;
 	position: relative;
 	height: 100%;
+
+	&.active {
+		font-weight: bold;
+	}
 
 	&:before,
 	&:after {
@@ -45,7 +50,7 @@
 	&:before {
 		top: 0;
 		@include transform(skew(20deg));
-		@include border-radius(0.2em 0.2em 0 0);
+		@include border-radius(0.2rem 0.2rem 0 0);
 	}
 
 	// Bottom of the arrow
@@ -85,4 +90,109 @@
 	&:after {
 		right: 50%;
 	}
+}
+
+// Override added status background color
+.item-wrap.added {
+	.item-title {
+		font-weight: bold;
+		background-color: $added-color;
+	}
+
+	&:before,
+	&:after {
+		background-color: $added-color;
+	}
+}
+
+.status-item:first-child .item-wrap.added {
+	background: linear-gradient(to right, $added-color 95%, transparent 5%);
+}
+
+.status-item:last-child .item-wrap.added {
+	background: linear-gradient(to left, $added-color 95%, transparent 5%);
+}
+
+// Override in-check status background color
+.item-wrap.in-check {
+	.item-title {
+		font-weight: bold;
+		background-color: $incheck-color;
+	}
+
+	&:before,
+	&:after {
+		background-color: $incheck-color;
+	}
+}
+
+.status-item:first-child .item-wrap.in-check {
+	background: linear-gradient(to right, $incheck-color 95%, transparent 5%);
+}
+
+.status-item:last-child .item-wrap.in-check {
+	background: linear-gradient(to left, $incheck-color 95%, transparent 5%);
+}
+
+// Override approved status background color
+.item-wrap.approved {
+	.item-title {
+		font-weight: bold;
+		background-color: $approved-color;
+	}
+
+	&:before,
+	&:after {
+		background-color: $approved-color;
+	}
+}
+
+.status-item:first-child .item-wrap.approved {
+	background: linear-gradient(to right, $approved-color 95%, transparent 5%);
+}
+
+.status-item:last-child .item-wrap.approved {
+	background: linear-gradient(to left, $approved-color 95%, transparent 5%);
+}
+
+// Override active status background color
+.item-wrap.active {
+	.item-title {
+		font-weight: bold;
+		background-color: $active-color;
+	}
+
+	&:before,
+	&:after {
+		background-color: $active-color;
+	}
+}
+
+.status-item:first-child .item-wrap.active {
+	background: linear-gradient(to right, $active-color 95%, transparent 5%);
+}
+
+.status-item:last-child .item-wrap.active {
+	background: linear-gradient(to left, $active-color 95%, transparent 5%);
+}
+
+// Override inactive status background color
+.item-wrap.inactive {
+	.item-title {
+		font-weight: bold;
+		background-color: $inactive-color;
+	}
+
+	&:before,
+	&:after {
+		background-color: $inactive-color;
+	}
+}
+
+.status-item:first-child .item-wrap.inactive {
+	background: linear-gradient(to right, $inactive-color 95%, transparent 5%);
+}
+
+.status-item:last-child .item-wrap.inactive {
+	background: linear-gradient(to left, $inactive-color 95%, transparent 5%);
 }

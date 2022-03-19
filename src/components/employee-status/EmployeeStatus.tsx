@@ -15,16 +15,14 @@ export default function EmployeeStatus({ ...props }) {
       {statuses.map((status: Status) => {
         return (
           <li key={status} className="status-item">
-            <div className="item-wrap">
-              <p
-                className={
-                  props.currentStatus === status
-                    ? "item-title active"
-                    : "item-title"
-                }
-              >
-                {status}
-              </p>
+            <div
+              className={
+                props.currentStatus === status
+                  ? `item-wrap ${status.toLowerCase()}`
+                  : "item-wrap"
+              }
+            >
+              <p className="item-title">{status}</p>
             </div>
           </li>
         );
