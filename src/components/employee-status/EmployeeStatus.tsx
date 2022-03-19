@@ -11,6 +11,13 @@ type EmployeeStatusProps = {
 
 export default function EmployeeStatus(props: EmployeeStatusProps) {
   const [status, setStatus] = useState(props.employee.status);
+  const statusList: Status[] = [
+    Status.added,
+    Status.incheck,
+    Status.approved,
+    Status.active,
+    Status.inactive,
+  ];
 
   function updateStatus(status: Status) {
     const employee: Employee = { ...props.employee };
@@ -20,14 +27,6 @@ export default function EmployeeStatus(props: EmployeeStatusProps) {
       successToast(`${employee.name} status is updated successfully!`);
     });
   }
-
-  const statusList: Status[] = [
-    Status.added,
-    Status.incheck,
-    Status.approved,
-    Status.active,
-    Status.inactive,
-  ];
 
   return (
     <ul className="status-list">
